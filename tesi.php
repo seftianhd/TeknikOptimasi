@@ -2,8 +2,7 @@
 
 use Catalogue as GlobalCatalogue;
 
-class Parameters
-{
+class Parameters{
     const FILE_NAME = 'products.txt';
     const COLUMNS = ['item', 'price'];
     const population_size = 10;
@@ -14,8 +13,7 @@ class Parameters
     const CROSSOVER_RATE = 0.8;
 }
 
-class Catalogue
-{
+class Catalogue{
     function createProductcolumn($listOfRawProduct){
         foreach (array_keys($listOfRawProduct) as $listOfRawProductKey){
             $listOfRawProduct[Parameters::COLUMNS[$listOfRawProductKey]] = $listOfRawProduct[$listOfRawProductKey];
@@ -45,8 +43,8 @@ class Catalogue
     }
 }
 
-class Individu
-{
+
+class Individu{
     function CountNumberOfGen()
     {
         $catalogue = new GlobalCatalogue;
@@ -62,8 +60,7 @@ class Individu
     }
 }
 
-class Population
-{
+class Population{
     function createRandomPupulation(){
         $individu = new Individu;
 
@@ -74,8 +71,8 @@ class Population
     }
 }
 
-class Fitness
-{
+
+class Fitness{
     //memilih item
     function selectionItem($individu){
         $catalogue = new Catalogue;
@@ -126,6 +123,7 @@ class Fitness
         }
     }
 
+
     //menemukan solusi yang terbaik dari individu yang FIT
     function isFound($fits){
         //menghitung item Max
@@ -154,6 +152,7 @@ class Fitness
         }
     }
 
+
     //mengecek apakah Fit atau tidak dari fitnes value
     function isFit($fitnessValue){
         if($fitnessValue <= Parameters::BUDGET){
@@ -161,7 +160,8 @@ class Fitness
         }
     }
     
-    //menseleksi
+
+    //menyeleksi
     function fitnessEvaluation($population){
         $catalogue = new Catalogue;
         foreach ($population as $listOfIndividuKey => $listOfIndividu){
@@ -197,6 +197,7 @@ class Fitness
         echo '<br>';
     }
 }
+
 
 //Pertemuan 3 Crossover
 class Crossover{
@@ -295,6 +296,7 @@ class Crossover{
         return $offsprings;
     }
 }
+
 
 // $parameters = [
 //     'file_name' => 'products.txt',
